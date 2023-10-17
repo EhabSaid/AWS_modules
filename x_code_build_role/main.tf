@@ -1,5 +1,5 @@
 
-resource "aws_iam_role" "codebuild_role_other_accounts" {
+resource "aws_iam_role" "codebuild_role" {
 
   name = var.x_codebuild_role_name
 
@@ -31,7 +31,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "codebuild_policy" {
-  role = aws_iam_role.codebuild_role_other_accounts.id
+  role = aws_iam_role.codebuild_role.id
 
   policy = <<POLICY
 {
