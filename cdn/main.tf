@@ -50,6 +50,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     }
   }
 
+  # tags = {
+  #   Name        = var.cdn_name
+  #   Environment = var.env_tag
+  # }
   tags = {
     Name        = var.cdn_name
     Environment = var.env_tag
