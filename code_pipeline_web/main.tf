@@ -25,8 +25,8 @@ resource "aws_codepipeline" "codepipeline_deployment" {
 
       configuration = {
         ConnectionArn    = "${var.github_connection_arn}"
-        FullRepositoryId = "${var.primary_full_repository_id}" #"my-organization/example"
-        BranchName       = "${var.primary_branch_name}"        #"main"
+        FullRepositoryId = "${var.primary_full_repository_id}"
+        BranchName       = "${var.primary_branch_name}"
       }
     }
   }
@@ -43,8 +43,8 @@ resource "aws_codepipeline" "codepipeline_deployment" {
       version         = "1"
 
       configuration = {
-        ProjectName = var.codebuild_tf_project
-        #PrimarySource= "source_output1"
+        ProjectName   = var.codebuild_tf_project
+        PrimarySource = "source_output1"
       }
     }
   }

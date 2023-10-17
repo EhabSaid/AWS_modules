@@ -119,7 +119,7 @@ resource "aws_codepipeline" "codepipeline_deployment" {
       run_order       = "3"
 
       configuration = {
-        ProjectName = var.primary_codebuild_tf_apply_project
+        ProjectName   = var.primary_codebuild_tf_apply_project
         PrimarySource = "source_output1"
       }
     }
@@ -138,7 +138,7 @@ resource "aws_codepipeline" "codepipeline_deployment" {
       run_order       = "3"
 
       configuration = {
-        ProjectName = var.secondary_codebuild_tf_apply_project
+        ProjectName   = var.secondary_codebuild_tf_apply_project
         PrimarySource = "source_output2"
       }
     }
