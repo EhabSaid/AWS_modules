@@ -2,7 +2,7 @@
 *****************************************
 *************** main.tf: ****************
 *****************************************
-module "app_builder_plan" {
+module "code_build" {
   source                = "github.com/EhabSaid/AWS_modules/code_build"
   depends_on            = [module.code_build_role]
   repo_link             = var.repo_link

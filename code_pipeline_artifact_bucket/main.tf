@@ -31,7 +31,7 @@ resource "aws_s3_bucket_policy" "allow_legacy_code_commit" {
         "Sid" : "",
         "Effect" : "Allow",
         "Principal" : {
-          "AWS" : "arn:aws:iam::${var.legacy_account_id}:root"
+          "AWS" : "arn:aws:iam::${var.account_id}:root"
         },
         "Action" : [
           "s3:Get*",

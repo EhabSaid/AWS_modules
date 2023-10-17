@@ -7,7 +7,7 @@ variable "artifact_bucket_name" {
 #   type        = string
 # }
 
-variable "legacy_account_id" {
+variable "account_id" {
   description = "legacy account ID to allow access from to artifact s3 bucket."
   type        = string
 }

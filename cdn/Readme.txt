@@ -30,7 +30,7 @@ variable "cdn_name" {
 variable "env_tag" {
   type = string
 }
-variable "web_url" {
+variable "s3_bucket_url" {
   type = string
 }
 variable "comment" {
