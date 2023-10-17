@@ -6,3 +6,7 @@ variable "env_tag" {
 variable "lambda_func_name" {
   type = string
 }
+
+variable "lambda_path" {
+  type = string
+}
