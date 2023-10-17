@@ -17,7 +17,8 @@ resource "aws_iam_role" "codebuild_role_other_accounts" {
             "Service": "codebuild.amazonaws.com"
         },
         "Action": "sts:AssumeRole"
-    },{
+        },
+        {
         "Effect": "Allow",
         "Principal": {
             "AWS": "arn:aws:iam::${var.deployment_account_id}:role/${var.x_codebuild_role_name}"
