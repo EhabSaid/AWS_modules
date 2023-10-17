@@ -73,19 +73,3 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
 EOF
 
 }
-
-
-# {
-#         "Effect":"Allow",
-#         "Action": [
-#             "s3:GetObject",
-#             "s3:PutObject",
-#             "s3:GetObjectVersion",
-#             "s3:GetBucketVersioning",
-#             "s3:PutObjectAcl"
-#         ],
-#         "Resource": [
-#             "${var.code_pipeline_artifact_bucket}",
-#             "${var.code_pipeline_artifact_bucket}/*"
-#         ]
-#     },
