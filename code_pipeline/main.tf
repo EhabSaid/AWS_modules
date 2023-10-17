@@ -21,6 +21,7 @@ resource "aws_codepipeline" "codepipeline_deployment" {
       owner            = "AWS"
       provider         = "CodeStarSourceConnection"
       version          = "1"
+      run_order        = "1"
       output_artifacts = ["source_output1"]
 
       configuration = {
@@ -32,19 +33,58 @@ resource "aws_codepipeline" "codepipeline_deployment" {
   }
 
   stage {
+    name = "Source_Stage"
+
+    action {
+      name             = "SecondarySource"
+      category         = "Source"
+      owner            = "AWS"
+      provider         = "CodeStarSourceConnection"
+      version          = "1"
+      run_order        = "1"
+      output_artifacts = ["source_output2"]
+
+      configuration = {
+        ConnectionArn    = "${var.github_connection_arn}"
+        FullRepositoryId = "${var.secondary_full_repository_id}"
+        BranchName       = "${var.primary_branch_name}"
+      }
+    }
+  }
+  stage {
     name = "Plan_Stage"
 
     action {
-      name            = "TerraformPlan"
+      name            = "TerraformPlan_dev_acc"
       category        = "Build"
       owner           = "AWS"
       provider        = "CodeBuild"
       input_artifacts = ["source_output1"]
       version         = "1"
+      run_order       = "2"
 
       configuration = {
-        ProjectName = var.codebuild_tf_plan_project
-        #PrimarySource= "source_output1"
+        ProjectName   = var.primary_codebuild_tf_plan_project
+        PrimarySource = "source_output1"
+      }
+    }
+  }
+
+  stage {
+    name = "Plan_Stage"
+
+    action {
+      name            = "TerraformPlan_slv_acc"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      input_artifacts = ["source_output2"]
+      version         = "1"
+      run_order       = "2"
+
+      configuration = {
+        ProjectName   = var.secondary_codebuild_tf_plan_project
+        PrimarySource = "source_output2"
       }
     }
   }
@@ -70,15 +110,35 @@ resource "aws_codepipeline" "codepipeline_deployment" {
     name = "Apply_Stage"
 
     action {
-      name            = "TerraformApply"
+      name            = "TerraformApply_dev_acc"
       category        = "Build"
       owner           = "AWS"
       provider        = "CodeBuild"
       input_artifacts = ["source_output1"]
       version         = "1"
+      run_order       = "3"
 
       configuration = {
-        ProjectName = var.codebuild_tf_apply_project
+        ProjectName = var.primary_codebuild_tf_apply_project
+        #PrimarySource= "source_output1"
+      }
+    }
+  }
+
+  stage {
+    name = "Apply_Stage"
+
+    action {
+      name            = "TerraformApply_slv_acc"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      input_artifacts = ["source_output2"]
+      version         = "1"
+      run_order       = "3"
+
+      configuration = {
+        ProjectName = var.secondary_codebuild_tf_apply_project
         #PrimarySource= "source_output1"
       }
     }

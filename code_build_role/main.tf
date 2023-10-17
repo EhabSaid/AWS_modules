@@ -1,6 +1,6 @@
 
 resource "aws_iam_role" "codebuild_role" {
-  
+
   name = var.codebuild_role_name
 
   tags = {

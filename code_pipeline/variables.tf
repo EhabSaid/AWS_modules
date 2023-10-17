@@ -1,9 +1,14 @@
 
-variable "codebuild_tf_plan_project" {
+variable "primary_codebuild_tf_plan_project" {
   description = "CodeBuild project used to deploy terrafrom"
 }
-
-variable "codebuild_tf_apply_project" {
+variable "secondary_codebuild_tf_plan_project" {
+  description = "CodeBuild project used to deploy terrafrom"
+}
+variable "primary_codebuild_tf_apply_project" {
+  description = "CodeBuild project used to deploy terrafrom"
+}
+variable "secondary_codebuild_tf_apply_project" {
   description = "CodeBuild project used to deploy terrafrom"
 }
 
@@ -31,7 +36,10 @@ variable "primary_full_repository_id" {
   description = "primary full repository url in format like Organization/example"
   default     = ""
 }
-
+variable "secondary_full_repository_id" {
+  description = "secondary full repository url in format like Organization/example"
+  default     = ""
+}
 variable "primary_branch_name" {
   description = "primary repository branch within repo we are cloning into build stage."
   default     = "main"
