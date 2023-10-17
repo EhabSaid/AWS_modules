@@ -17,7 +17,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   enabled         = true
   is_ipv6_enabled = true
-  comment         = "Software_Factory"
+  comment         = var.comment
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -48,5 +48,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     geo_restriction {
       restriction_type = "none"
     }
+  }
+
+  tags = {
+    Name        = var.cdn_name
+    Environment = var.env_tag
   }
 }
