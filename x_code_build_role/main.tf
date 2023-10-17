@@ -88,3 +88,5 @@ resource "aws_iam_role_policy" "codebuild_policy" {
 POLICY
 
 }
+
+# "AWS": "arn:aws:iam::${var.deployment_account_id}:role/${var.x_codebuild_role_name}"

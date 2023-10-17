@@ -30,10 +30,6 @@ resource "aws_codepipeline" "codepipeline_deployment" {
         BranchName       = "${var.primary_branch_name}"        #"main"
       }
     }
-  }
-
-  stage {
-    name = "Source_Stage"
 
     action {
       name             = "SecondarySource"
@@ -51,6 +47,7 @@ resource "aws_codepipeline" "codepipeline_deployment" {
       }
     }
   }
+
   stage {
     name = "Plan_Stage"
 
@@ -68,10 +65,6 @@ resource "aws_codepipeline" "codepipeline_deployment" {
         PrimarySource = "source_output1"
       }
     }
-  }
-
-  stage {
-    name = "Plan_Stage"
 
     action {
       name            = "TerraformPlan_slv_acc"
@@ -123,11 +116,7 @@ resource "aws_codepipeline" "codepipeline_deployment" {
         PrimarySource = "source_output1"
       }
     }
-  }
-
-  stage {
-    name = "Apply_Stage"
-
+    
     action {
       name            = "TerraformApply_slv_acc"
       category        = "Build"
