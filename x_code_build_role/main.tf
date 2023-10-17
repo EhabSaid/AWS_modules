@@ -1,5 +1,4 @@
 
-
 resource "aws_iam_role" "codebuild_role_other_accounts" {
 
   name = var.x_codebuild_role_name
