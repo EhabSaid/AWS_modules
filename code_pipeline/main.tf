@@ -120,7 +120,7 @@ resource "aws_codepipeline" "codepipeline_deployment" {
 
       configuration = {
         ProjectName = var.primary_codebuild_tf_apply_project
-        #PrimarySource= "source_output1"
+        PrimarySource = "source_output1"
       }
     }
   }
@@ -139,7 +139,7 @@ resource "aws_codepipeline" "codepipeline_deployment" {
 
       configuration = {
         ProjectName = var.secondary_codebuild_tf_apply_project
-        #PrimarySource= "source_output1"
+        PrimarySource = "source_output2"
       }
     }
   }
@@ -157,8 +157,6 @@ resource "aws_codepipeline" "codepipeline_deployment" {
 
       configuration = {
         FunctionName = var.lambda_project
-
-        #PrimarySource= "source_output1"
       }
     }
   }
