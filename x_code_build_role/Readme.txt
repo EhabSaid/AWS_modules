@@ -5,6 +5,7 @@
 module "x_code_build_role" {
   source                = "github.com/EhabSaid/AWS_modules/x_code_build_role"
   x_codebuild_role_name = var.x_codebuild_role_name
+  deployment_account_id = var.deployment_account_id
   env_tag               = var.env_tag
 }
 
@@ -37,3 +38,4 @@ output "code_build_role" {
 *****************************************
 env_tag               = "env-name"
 x_codebuild_role_name = "x_codebuild-service-role-name"
+deployment_account_id = "deployment_account_id"
