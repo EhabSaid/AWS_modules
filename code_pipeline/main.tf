@@ -96,7 +96,7 @@ resource "aws_codepipeline" "codepipeline_deployment" {
       version         = "1"
 
       configuration = {
-        FunctionName  = var.lambda_project
+        FunctionName = var.lambda_project
 
         #PrimarySource= "source_output1"
       }

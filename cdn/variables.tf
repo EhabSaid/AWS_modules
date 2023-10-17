@@ -13,5 +13,5 @@ variable "env_tag" {
 
 variable "comment" {
   default = "No_Comment"
-  type = string
+  type    = string
 }
