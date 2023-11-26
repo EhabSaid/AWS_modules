@@ -32,7 +32,7 @@ resource "aws_iam_role_policy" "codebuild_policy" {
   "Statement": {
     "Effect": "Allow",
     "Action": "sts:AssumeRole",
-    "Resource": "arn:aws:iam::${var.deployment_account_id}:role/${var.x_codebuild_role_name}"
+    "Resource": "arn:aws:iam::${var.deployment_account_id}:role/${var.cross-account-role-name}"
   }
 }
 POLICY
