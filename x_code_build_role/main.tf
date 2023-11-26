@@ -17,19 +17,28 @@ resource "aws_iam_role" "codebuild_role_other_accounts" {
             "Service": "codebuild.amazonaws.com"
         },
         "Action": "sts:AssumeRole"
-    },
-    {
-        "Effect": "Allow",
-        "Principal": {
-            "AWS": "arn:aws:iam::${var.deployment_account_id}:root"
-        },
-        "Action": "sts:AssumeRole"
     }]
 }
 EOF
 
 }
 
+resource "aws_iam_role_policy" "codebuild_policy" {
+  role = aws_iam_role.codebuild_role_other_accounts.id
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "sts:AssumeRole",
+    "Resource": "arn:aws:iam::${var.deployment_account_id}:role/${var.x_codebuild_role_name}"
+  }
+}
+POLICY
+
+}
+/*
 resource "aws_iam_role_policy" "codebuild_policy" {
   role = aws_iam_role.codebuild_role_other_accounts.id
 
@@ -88,5 +97,5 @@ resource "aws_iam_role_policy" "codebuild_policy" {
 POLICY
 
 }
-
+*/
 # "AWS": "arn:aws:iam::${var.deployment_account_id}:role/${var.x_codebuild_role_name}"
