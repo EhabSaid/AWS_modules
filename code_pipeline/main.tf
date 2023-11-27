@@ -73,7 +73,7 @@ resource "aws_codepipeline" "codepipeline_deployment" {
       provider        = "CodeBuild"
       input_artifacts = ["source_output2"]
       version         = "1"
-      run_order       = "2"
+      run_order       = "1"
 
       configuration = {
         ProjectName   = var.secondary_codebuild_tf_plan_project
@@ -124,7 +124,7 @@ resource "aws_codepipeline" "codepipeline_deployment" {
       provider        = "CodeBuild"
       input_artifacts = ["source_output2"]
       version         = "1"
-      run_order       = "1"
+      run_order       = "2"
 
       configuration = {
         ProjectName   = var.secondary_codebuild_tf_apply_project
