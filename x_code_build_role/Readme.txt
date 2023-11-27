@@ -20,6 +20,10 @@ variable "x_codebuild_role_name" {
   type = string
 }
 
+variable "cross-account-role-name" {
+  type = string
+}
+
 variable "deployment_account_id" {
   description = "deployment account ID"
   type        = string
@@ -36,6 +40,7 @@ output "code_build_role" {
 *****************************************
 *********** terraform.tfvars: ***********
 *****************************************
-env_tag               = "env-name"
-x_codebuild_role_name = "x_codebuild-service-role-name"
-deployment_account_id = "deployment_account_id"
+env_tag                 = "env-name"
+x_codebuild_role_name   = "x_codebuild-service-role-name"
+cross-account-role-name = "cross-account-role-name"
+deployment_account_id   = "deployment_account_id"

@@ -116,7 +116,7 @@ resource "aws_codepipeline" "codepipeline_deployment" {
         PrimarySource = "source_output1"
       }
     }
-    
+
     action {
       name            = "TerraformApply_slv_acc"
       category        = "Build"
