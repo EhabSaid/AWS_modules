@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "S3_bucket" {
   bucket = var.s3_name
-  acl    = "private"
+  acl    = "public-read"
 
   website {
     index_document = "index.html"
