@@ -22,7 +22,7 @@ resource "aws_s3_bucket_public_access_block" "S3_bucket" {
   restrict_public_buckets = false
 }
 
-resource "aws_s3_bucket_ownership_controls" "site" {
+resource "aws_s3_bucket_ownership_controls" "S3_bucket" {
   bucket = aws_s3_bucket.S3_bucket.id
   rule {
   object_ownership = "BucketOwnerPreferred"
