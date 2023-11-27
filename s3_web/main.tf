@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "S3_bucket" {
   bucket = var.s3_name
-  acl    = "public-read"
+  # acl    = "public-read"
 
   website {
     index_document = "index.html"
@@ -20,13 +20,6 @@ resource "aws_s3_bucket_public_access_block" "S3_bucket" {
   block_public_policy     = false
   ignore_public_acls      = false
   restrict_public_buckets = false
-}
-
-resource "aws_s3_bucket_ownership_controls" "site" {
-  bucket = aws_s3_bucket.S3_bucket.id
-  rule {
-  object_ownership = "BucketOwnerPreferred"
-  }
 }
 
 resource "aws_s3_bucket_policy" "static_website_policy" {
