@@ -29,11 +29,58 @@ resource "aws_iam_role_policy" "codebuild_policy" {
   policy = <<POLICY
 {
   "Version": "2012-10-17",
-  "Statement": {
+  "Statement": [
+    {
     "Effect": "Allow",
     "Action": "sts:AssumeRole",
     "Resource": "arn:aws:iam::${var.deployment_account_id}:role/${var.cross-account-role-name}"
-  }
+    },{
+    "Effect": "Allow",
+    "Action": [
+        "ec2:*",
+        "s3:*",
+        "cloudfront:*",
+        "cloudwatch:*",
+        "config:*",
+        "backup:*",
+        "backup-storage:*",
+        "dynamodb:*",
+        "iam:*",
+        "guardduty:*",
+        "cloudtrail:*",
+        "ssm:*",
+        "logs:*",
+        "route53:*",
+        "route53resolver:*",
+        "ds:*",
+        "events:*",
+        "sns:*",
+        "sqs:*",
+        "kms:*",
+        "ram:*",
+        "lambda:*",
+        "autoscaling:*",
+        "directconnect:*",
+        "sts:GetCallerIdentity",
+        "sts:AssumeRole",
+        "elasticfilesystem:*",
+        "elasticloadbalancing:*",
+        "secretsmanager:*",
+        "ecr:*",
+        "codestar-connections:UseConnection",
+        "codebuild:*",
+        "codepipeline:*",
+        "codecommit:*",
+        "cloudformation:*",
+        "iot:*",
+        "apigateway:*",
+        "cognito-idp:*",
+        "kinesis:*",
+        "qldb:*"
+    ],
+    "Resource": "*"
+    }
+    ]
 }
 POLICY
 
