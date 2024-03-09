@@ -13,14 +13,6 @@ resource "aws_codebuild_project" "codebuild_deployment" {
     compute_type = "BUILD_GENERAL1_MEDIUM"
     image        = var.codebuild_image
     type         = "LINUX_CONTAINER"
-
-    dynamic "environment_variable" {
-      for_each = var.passing_variables
-      content {
-        name  = environment_variable.key
-        value = environment_variable.value
-      }
-    }
   }
 
   source {

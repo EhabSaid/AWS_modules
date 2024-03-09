@@ -30,12 +30,3 @@ variable "env_tag" {
 variable "repo_link" {
   type = string
 }
-
-variable "passing_variables" {
-  description = "A map of example variables to inject into CodeBuild"
-  type        = map(string)
-  default     = {
-    key1 = "value1"
-    key2 = "value2"
-  }
-}
